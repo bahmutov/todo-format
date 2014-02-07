@@ -14,5 +14,10 @@
     "check"
   ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "check-types": "~1.1.1",
+    "string": "~1.8.0",
+    "chalk": "~0.4.0"
+  }
 }
