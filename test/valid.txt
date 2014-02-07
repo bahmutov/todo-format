@@ -5,3 +5,5 @@ more text
 /*
     TODO(another): another todo
 */
+
+this is part of another word todoSomething

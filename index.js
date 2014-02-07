@@ -25,7 +25,7 @@ var errors = [];
 var content = read(filename, 'utf-8');
 var lines = S(content).lines();
 lines.forEach(function (line, k) {
-  var todoRegexp = /\ todo/gi;
+  var todoRegexp = /\ todo\W/gi;
   var todoFormatRegexp = /\s*TODO\(\w+\):/g;
   if (todoRegexp.test(line)) {
     var valid = todoFormatRegexp.test(line);
