@@ -11,5 +11,5 @@ gt.async('valid todos', function () {
 
 gt.async('invalid todos', function () {
   var filename = join(__dirname, 'invalid-todos.txt');
-  gt.exec('node', [index, filename], 2, 'exits with number of invalid todos');
+  gt.exec('node', [index, filename], 3, 'exits with number of invalid todos');
 });

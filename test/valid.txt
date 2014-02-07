@@ -7,3 +7,4 @@ more text
 */
 
 this is part of another word todoSomething
+{# TODO(matt): cruft cleanup
