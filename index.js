@@ -30,14 +30,16 @@ lines.forEach(function (line, k) {
   if (todoRegexp.test(line)) {
     var valid = todoFormatRegexp.test(line);
     var msg = k +': ' + line;
-    if (valid && !outputJson) {
-      console.log( chalk.green(msg) );
+    if (valid) {
+      if (!outputJson) {
+        console.log( chalk.green(msg) );
+      }
     } else {
       var error = {
         file: filename,
-        line: k,
+        line: k + 1,
         col: 0,
-        reason: 'invalid todo format',
+        reason: 'invalid todo format, should be "TODO(name):"',
         code: 0
       };
       if (!outputJson) {
