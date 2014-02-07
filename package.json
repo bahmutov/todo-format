@@ -7,6 +7,7 @@
     "test": "npm run e2e",
     "e2e": "node node_modules/gt test/e2e.js"
   },
+  "pre-commit": "npm test",
   "keywords": [
     "file",
     "source",
@@ -22,6 +23,7 @@
     "chalk": "~0.4.0"
   },
   "devDependencies": {
-    "gt": "~0.8.33"
+    "gt": "~0.8.33",
+    "pre-git": "0.0.15"
   }
 }
