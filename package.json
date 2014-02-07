@@ -4,7 +4,8 @@
   "description": "Finds all TODO items in given file, reports error if they don't follow given regexp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run e2e",
+    "e2e": "node node_modules/gt test/e2e.js"
   },
   "keywords": [
     "file",
@@ -19,5 +20,8 @@
     "check-types": "~1.1.1",
     "string": "~1.8.0",
     "chalk": "~0.4.0"
+  },
+  "devDependencies": {
+    "gt": "~0.8.33"
   }
 }
