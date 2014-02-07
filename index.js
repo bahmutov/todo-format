@@ -15,6 +15,8 @@ if (!exists(filename)) {
   process.exit(-1);
 }
 
+var invalid = 0;
+
 var content = read(filename, 'utf-8');
 var lines = S(content).lines();
 lines.forEach(function (line, k) {
@@ -27,6 +29,9 @@ lines.forEach(function (line, k) {
       console.log( chalk.green(msg) );
     } else {
       console.log( chalk.red(msg) );
+      invalid += 1;
     }
   }
 });
+
+process.exit(invalid);
