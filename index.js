@@ -1,3 +1,4 @@
+require('console.json');
 var check = require('check-types');
 var chalk = require('chalk');
 var S = require('string');
@@ -15,7 +16,11 @@ if (!exists(filename)) {
   process.exit(-1);
 }
 
-var invalid = 0;
+var outputJson = process.argv.some(function (arg) {
+  return arg === '--json';
+});
+
+var errors = [];
 
 var content = read(filename, 'utf-8');
 var lines = S(content).lines();
@@ -25,13 +30,25 @@ lines.forEach(function (line, k) {
   if (todoRegexp.test(line)) {
     var valid = todoFormatRegexp.test(line);
     var msg = k +': ' + line;
-    if (valid) {
+    if (valid && !outputJson) {
       console.log( chalk.green(msg) );
     } else {
-      console.log( chalk.red(msg) );
-      invalid += 1;
+      var error = {
+        file: filename,
+        line: k,
+        col: 0,
+        reason: 'invalid todo format',
+        code: 0
+      };
+      if (!outputJson) {
+        console.log( chalk.red(msg) );
+      }
+      errors.push(error);
     }
   }
 });
 
-process.exit(invalid);
+if (outputJson) {
+  console.json(errors);
+}
+process.exit(errors.length);

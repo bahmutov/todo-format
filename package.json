@@ -1,6 +1,6 @@
 {
   "name": "todo-format",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Finds all TODO items in given file, reports error if they don't follow given regexp",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,8 @@
   "dependencies": {
     "check-types": "~1.1.1",
     "string": "~1.8.0",
-    "chalk": "~0.4.0"
+    "chalk": "~0.4.0",
+    "console.json": "~0.1.1"
   },
   "devDependencies": {
     "gt": "~0.8.33",
