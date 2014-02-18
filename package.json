@@ -1,13 +1,25 @@
 {
   "name": "todo-format",
-  "version": "0.1.1",
   "description": "Finds all TODO items in given file, reports error if they don't follow given regexp",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run e2e",
-    "e2e": "node node_modules/gt test/e2e.js"
+  "version": "0.1.1",
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "dependencies": {
+    "chalk": "~0.4.0",
+    "check-types": "~1.1.1",
+    "console.json": "~0.1.1",
+    "string": "~1.8.0"
   },
-  "pre-commit": "npm test",
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-jshint-solid": "0.0.1",
+    "grunt-nice-package": "~0.2.1",
+    "grunt-readme": "~0.4.5",
+    "gt": "~0.8.33",
+    "jshint-stylish": "~0.1.5",
+    "matchdep": "~0.3.0",
+    "pre-git": "0.0.15"
+  },
   "keywords": [
     "file",
     "source",
@@ -15,20 +27,15 @@
     "format",
     "check"
   ],
-  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "check-types": "~1.1.1",
-    "string": "~1.8.0",
-    "chalk": "~0.4.0",
-    "console.json": "~0.1.1"
-  },
-  "devDependencies": {
-    "gt": "~0.8.33",
-    "pre-git": "0.0.15"
-  },
+  "main": "index.js",
+  "pre-commit": "npm test",
   "repository": {
     "type": "git",
     "url": "git://github.com/bahmutov/todo-format.git"
+  },
+  "scripts": {
+    "test": "npm run e2e",
+    "e2e": "node node_modules/gt test/e2e.js"
   }
 }
