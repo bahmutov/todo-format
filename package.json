@@ -26,5 +26,9 @@
   "devDependencies": {
     "gt": "~0.8.33",
     "pre-git": "0.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bahmutov/todo-format.git"
   }
 }
