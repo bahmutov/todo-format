@@ -29,3 +29,12 @@ gt.async('invalid todos with json output', function () {
     gt.ok(isJson(stdout), 'output should be json\n' + stdout);
   });
 });
+
+gt.async('invalid todos with output array', function () {
+  var filename = join(__dirname, 'invalid-todos.txt');
+  gt.exec('node', [index, filename, '--json'], 4, function (stdout, stderr) {
+    var errors = JSON.parse(stdout);
+    gt.ok(Array.isArray(errors), 'output should be json array\n' + stdout);
+    gt.equal(errors.length, 4, 'there should be 4 errors in the output array\n' + stdout);
+  });
+});
