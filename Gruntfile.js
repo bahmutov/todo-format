@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         options: {
           reporter: 'spec'
         },
-        src: ['index.js']
+        src: ['src/todo-format.js']
       }
     }
   });
@@ -26,5 +26,5 @@ module.exports = function(grunt) {
   var plugins = require('matchdep').filterDev('grunt-*');
   plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['jshint', 'jshint-solid', 'nice-package']);
+  grunt.registerTask('default', ['jshint', 'jshint-solid', 'nice-package', 'mochaTest']);
 };

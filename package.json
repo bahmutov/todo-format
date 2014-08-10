@@ -1,7 +1,7 @@
 {
   "name": "todo-format",
   "description": "Finds all TODO items in given file, reports error if they don't follow given regexp",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/todo-format/issues"
@@ -22,8 +22,10 @@
     "grunt-readme": "0.4.5",
     "gt": "0.8.38",
     "jshint-stylish": "0.4.0",
+    "lazy-ass": "0.4.1",
     "matchdep": "0.3.0",
-    "pre-git": "0.0.16"
+    "pre-git": "0.0.16",
+    "test-mole": "0.2.0"
   },
   "engines": {
     "node": "> 0.8"
@@ -38,7 +40,10 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "pre-commit": "npm test",
+  "pre-commit": [
+    "grunt",
+    "npm test"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/bahmutov/todo-format.git"
