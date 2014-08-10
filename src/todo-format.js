@@ -1,6 +1,16 @@
 var S = require('string');
 var chalk = require('chalk');
 
+function isTodoLine(line) {
+  var todoRegexp = /\ todo(\W|$)/gi;
+  return todoRegexp.test(line);
+}
+
+function isValidTodoLine(line) {
+  var todoFormatRegexp = /\s*TODO\(\w+\):/g;
+  return todoFormatRegexp.test(line);
+}
+
 function checkTodos(opts) {
   opts = opts || {};
   var content = opts.content || '';
@@ -12,10 +22,9 @@ function checkTodos(opts) {
 
   lines.forEach(function (line, k) {
     var lineNumber = k + 1;
-    var todoRegexp = /\ todo(\W|$)/gi;
-    var todoFormatRegexp = /\s*TODO\(\w+\):/g;
-    if (todoRegexp.test(line)) {
-      var valid = todoFormatRegexp.test(line);
+
+    if (isTodoLine(line)) {
+      var valid = isValidTodoLine(line);
       var msg = lineNumber +': ' + line;
 
       if (valid) {
