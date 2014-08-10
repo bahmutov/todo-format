@@ -13,8 +13,13 @@ module.exports = function(grunt) {
       }
     },
 
-    'nice-package': {
-      all: {}
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['index.js']
+      }
     }
   });
 

@@ -1,9 +1,11 @@
 require('console.json');
 var check = require('check-types');
 var chalk = require('chalk');
-var S = require('string');
+
 var exists = require('fs').existsSync;
 var read = require('fs').readFileSync;
+var checkTodos = require('./src/todo-format');
+check.verify.fn(checkTodos, 'missing check todos function');
 var pkg = require('./package.json');
 
 var filename = process.argv[2];
@@ -20,34 +22,11 @@ var outputJson = process.argv.some(function (arg) {
   return arg === '--json';
 });
 
-var errors = [];
-
 var content = read(filename, 'utf-8');
-var lines = S(content).lines();
-lines.forEach(function (line, k) {
-  var todoRegexp = /\ todo(\W|$)/gi;
-  var todoFormatRegexp = /\s*TODO\(\w+\):/g;
-  if (todoRegexp.test(line)) {
-    var valid = todoFormatRegexp.test(line);
-    var msg = k +': ' + line;
-    if (valid) {
-      if (!outputJson) {
-        console.log( chalk.green(msg) );
-      }
-    } else {
-      var error = {
-        file: filename,
-        line: k + 1,
-        col: 0,
-        reason: 'invalid todo format, should be "TODO(name):"',
-        code: 0
-      };
-      if (!outputJson) {
-        console.log( chalk.red(msg) );
-      }
-      errors.push(error);
-    }
-  }
+var errors = checkTodos({
+  content: content,
+  verbose: !outputJson,
+  filename: filename
 });
 
 if (outputJson) {
