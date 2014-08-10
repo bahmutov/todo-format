@@ -1,8 +1,11 @@
 {
   "name": "todo-format",
   "description": "Finds all TODO items in given file, reports error if they don't follow given regexp",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "bin": {
+    "todo-format": "./index.js"
+  },
   "bugs": {
     "url": "https://github.com/bahmutov/todo-format/issues"
   },
@@ -40,16 +43,13 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "pre-commit": [
-    "grunt",
-    "npm test"
-  ],
+  "pre-commit": "npm test",
   "repository": {
     "type": "git",
     "url": "git://github.com/bahmutov/todo-format.git"
   },
   "scripts": {
-    "test": "npm run e2e",
+    "test": "grunt && npm run e2e",
     "e2e": "node node_modules/gt test/e2e.js"
   }
 }

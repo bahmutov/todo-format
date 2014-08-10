@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('console.json');
 var check = require('check-types');
 var chalk = require('chalk');
