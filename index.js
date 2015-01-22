@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require('console.json');
-var argv = require('optimist').argv;
+var argv = require('optimist').boolean(['j', 'json']).argv;
 var check = require('check-types');
 var chalk = require('chalk');
 
