@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 require('console.json');
+var argv = require('optimist').boolean(['j', 'json']).argv;
 var check = require('check-types');
 var chalk = require('chalk');
 
@@ -10,7 +11,7 @@ var checkTodos = require('./src/todo-format');
 check.verify.fn(checkTodos, 'missing check todos function');
 var pkg = require('./package.json');
 
-var filename = process.argv[2];
+var filename = argv._[0];
 if (!check.unemptyString(filename)) {
   console.error('usage', pkg.name, '<input filename>');
   process.exit(-1);
@@ -20,9 +21,7 @@ if (!exists(filename)) {
   process.exit(-1);
 }
 
-var outputJson = process.argv.some(function (arg) {
-  return arg === '--json';
-});
+var outputJson = argv.j || argv.json;
 
 var content = read(filename, 'utf-8');
 var errors = checkTodos({

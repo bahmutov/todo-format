@@ -28,6 +28,9 @@ gt.async('invalid todos with json output', function () {
   gt.exec('node', [index, filename, '--json'], 4, function (stdout, stderr) {
     gt.ok(isJson(stdout), 'output should be json\n' + stdout);
   });
+  gt.exec('node', [index, '--json', filename], 4, function (stdout, stderr) {
+    gt.ok(isJson(stdout), 'output should be json\n' + stdout);
+  });
 });
 
 gt.async('invalid todos with output array', function () {
